@@ -13,5 +13,7 @@ The HP203B sensor module is used to measure air temperature and atmospheric pres
 
 ![HP203B](https://github.com/EngDial/Greenhouse/blob/master/HP203B.jpg)
 
+The AM2320 is used to measure temperature and relative humidity. It is connected to the I2C bus and is powered by 5 volts.
 
+![AM2320](https://github.com/EngDial/Greenhouse/blob/master/AM2320.jpg)
 
