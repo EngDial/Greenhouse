@@ -12,6 +12,7 @@ Power is provided from a 12-volt uninterruptible power supply via a DC/DC conver
 ![arduino_stm32](https://github.com/EngDial/Greenhouse/blob/master/img/dc_dc.jpg)
 
 ### RTC
+![DS3231](https://github.com/EngDial/Greenhouse/blob/master/img/DS3231.jpg)
 
 ### SD card
 ![SDC](https://github.com/EngDial/Greenhouse/blob/master/img/SDC.jpg)
