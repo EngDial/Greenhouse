@@ -14,6 +14,7 @@ Power is provided from a 12-volt uninterruptible power supply via a DC/DC conver
 ### RTC
 
 ### SD card
+![SDC](https://github.com/EngDial/Greenhouse/blob/master/img/SDC.jpg)
 
 ### Sensors
 The HP203B sensor module is used to measure air temperature and atmospheric pressure. It is connected to the I2C bus and is powered by 3.3 volts from the Arduino board.
@@ -36,3 +37,5 @@ To control the external load, relay modules are used. The relays are controlled 
 ![HC595](https://github.com/EngDial/Greenhouse/blob/master/img/74HC595.JPG)
 
 ### Input siglas
+To expand the input ports, the 74HC165 shift registers included cascaded with parallel loading and sequential unloading to the SPI bus. The inputs use protection from a reverse diode which provides an active low level.
+
