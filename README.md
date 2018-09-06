@@ -16,5 +16,5 @@ The HP203B sensor module is used to measure air temperature and atmospheric pres
 The AM2320 is used to measure temperature and relative humidity. It is connected to the I2C bus and is powered by 5 volts.
 ![AM2320](https://github.com/EngDial/Greenhouse/blob/master/AM2320.jpg)
 
-Sensors DS18B20 in hermetic design are used to control air and soil temperature.
+Sensors DS18B20 in hermetic design are used to control air and soil temperature. It is connected to a single-wire bus and is powered from 5 volts.
 ![DS18B20_H](https://github.com/EngDial/Greenhouse/blob/master/DS18B20_H.jpg)
