@@ -7,16 +7,14 @@ As a base board, the Arduino board is the STM32F103C8.
 
 ### Power
 Power is provided from a 12-volt uninterruptible power supply via a DC/DC converter that outputs 5V/2A.
-
 ![arduino_stm32](https://github.com/EngDial/Greenhouse/blob/master/dc_dc.jpg)
 
 ### Sensors
 The HP203B sensor module is used to measure air temperature and atmospheric pressure. It is connected to the I2C bus and is powered by 3.3 volts from the Arduino board.
-
 ![HP203B](https://github.com/EngDial/Greenhouse/blob/master/HP203B.jpg)
 
 The AM2320 is used to measure temperature and relative humidity. It is connected to the I2C bus and is powered by 5 volts.
-
 ![AM2320](https://github.com/EngDial/Greenhouse/blob/master/AM2320.jpg)
 
 Sensors DS18B20 in hermetic design are used to control air and soil temperature.
+![DS18B20_H](https://github.com/EngDial/Greenhouse/blob/master/DS18B20_H.jpg)
