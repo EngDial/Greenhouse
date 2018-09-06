@@ -4,4 +4,4 @@ As a base board, the Arduino board is the STM32F103C8.
 ![arduino_stm32](https://github.com/EngDial/Greenhouse/blob/master/arduino_stm32.jpg)
 Power is provided from a 12-volt uninterruptible power supply via a DC/DC converter that outputs 5V/2A.
 ![arduino_stm32](https://github.com/EngDial/Greenhouse/blob/master/dc_dc.jpg)
-
+The HP203B sensor module is used to measure air temperature and atmospheric pressure. It is connected to the I2C bus and is powered by 3.3 volts from the Arduino board.
