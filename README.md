@@ -24,6 +24,7 @@ Sensors DS18B20 in hermetic design are used to control air and soil temperature.
 ![DS18B20_H](https://github.com/EngDial/Greenhouse/blob/master/img/DS18B20_H.jpg)
 
 ### Out relay
+![74HC595](https://github.com/EngDial/Greenhouse/blob/master/img/74HC595.jpg)
 ![RELAY16_12V](https://github.com/EngDial/Greenhouse/blob/master/img/RELAY16_12V.jpg)
 
 ### Input siglas
