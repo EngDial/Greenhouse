@@ -10,7 +10,7 @@ Power is provided from a 12-volt uninterruptible power supply via a DC/DC conver
 
 ![arduino_stm32](https://github.com/EngDial/Greenhouse/blob/master/img/dc_dc_.jpg)
 ### RTC
-Real-time clock DS 3231 is used to synchronize processes and save statistics.
+Real-time clock DS 3231 is used to synchronize processes and save the time of statistics. EEPROM 24C32 on the RTC board is needed to save the settings.
 
 ![DS3231](https://github.com/EngDial/Greenhouse/blob/master/img/DS3231_.jpg)
 ### SD card
