@@ -28,7 +28,7 @@ The AM2320 is used to measure temperature and relative humidity. It is connected
 
 Sensors DS18B20 in hermetic design are used to control air and soil temperature. It is connected to a single-wire bus and is powered from 5 volts.
 
-![DS18B20_H](https://github.com/EngDial/Greenhouse/blob/master/img/DS18B20_H.jpg)
+![DS18B20_H](https://github.com/EngDial/Greenhouse/blob/master/img/DS18B20_H_.jpg)
 
 ### Out relays
 To control the external load, relay modules are used. The relays are controlled via the shift registers 74НС595 connected cascaded and connected via the SPI bus.
