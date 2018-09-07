@@ -35,7 +35,7 @@ To control the external load, relay modules are used. The relays are controlled 
 
 ![RELAY16_12V](https://github.com/EngDial/Greenhouse/blob/master/img/RELAY16_12V.jpg)
 
-![HC595](https://github.com/EngDial/Greenhouse/blob/master/img/74HC595.JPG)
+![HC595](https://github.com/EngDial/Greenhouse/blob/master/img/74HC595_.jpg)
 
 ### Input siglas
 To expand the input ports, the 74HC165 shift registers included cascaded with parallel loading and sequential unloading to the SPI bus. The inputs use protection from a reverse diode which provides an active low level.
