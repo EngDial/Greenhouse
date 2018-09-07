@@ -5,15 +5,15 @@
 В качестве базовой платы выступает плата Arduino на STM32F103C8.
 
 ![arduino_stm32](https://github.com/EngDial/Greenhouse/blob/master/img/arduino_stm32_.jpg)
-### Power
+### Питание
 Питание обеспечивается от 12-вольтного источника бесперебойного питания через DC/DC-преобразователь, который выдает 5V/2A.
 
 ![arduino_stm32](https://github.com/EngDial/Greenhouse/blob/master/img/dc_dc_.jpg)
-### RTC
+### Часы реального времени
 Часы реального времени на DS3231 используются для синхронизации процессов и сохранения времени статистики. EEPROM 24C32 на плате RTC необходима для сохранения настроек.
 
 ![DS3231](https://github.com/EngDial/Greenhouse/blob/master/img/DS3231_.jpg)
-### SD card
+### SD карта
 SD-карта необходима для записи файлов журнала.
 
 ![SDC](https://github.com/EngDial/Greenhouse/blob/master/img/SDC_.jpg)
