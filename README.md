@@ -12,15 +12,15 @@ Power is provided from a 12-volt uninterruptible power supply via a DC/DC conver
 ![arduino_stm32](https://github.com/EngDial/Greenhouse/blob/master/img/dc_dc.jpg)
 
 ### RTC
-![DS3231](https://github.com/EngDial/Greenhouse/blob/master/img/DS3231.jpg)
+![DS3231](https://github.com/EngDial/Greenhouse/blob/master/img/DS3231_.jpg)
 
 ### SD card
-![SDC](https://github.com/EngDial/Greenhouse/blob/master/img/SDC.jpg)
+![SDC](https://github.com/EngDial/Greenhouse/blob/master/img/SDC_.jpg)
 
 ### Sensors
 The HP203B sensor module is used to measure air temperature and atmospheric pressure. It is connected to the I2C bus and is powered by 3.3 volts from the Arduino board.
 
-![HP203B](https://github.com/EngDial/Greenhouse/blob/master/img/HP203B.jpg)
+![HP203B](https://github.com/EngDial/Greenhouse/blob/master/img/HP203B_.jpg)
 
 The AM2320 is used to measure temperature and relative humidity. It is connected to the I2C bus and is powered by 5 volts.
 
