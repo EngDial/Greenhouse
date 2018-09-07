@@ -40,7 +40,7 @@ AM2320 используется для измерения температуры
 
 ![Input](https://github.com/EngDial/Greenhouse/blob/master/img/Input.jpg)
 ![74HC165](https://github.com/EngDial/Greenhouse/blob/master/img/74hc165.jpg)
-# Привод форточек
+### Привод форточек
 Для приводов используются редукторы с зубчатой рейкой.
 
 ![motor](https://github.com/EngDial/Greenhouse/blob/master/img/motor.jpg)
