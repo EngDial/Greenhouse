@@ -46,5 +46,7 @@ AM2320 используется для измерения температуры
 ![motor](https://github.com/EngDial/Greenhouse/blob/master/img/motor.jpg)
 ![drive_win](https://github.com/EngDial/Greenhouse/blob/master/img/drive_win1.jpg)
 ![drive](https://github.com/EngDial/Greenhouse/blob/master/img/drive.jpg)
+## Щит управления системой
+![box](https://github.com/EngDial/Greenhouse/blob/master/img/box.jpg)
 
 
