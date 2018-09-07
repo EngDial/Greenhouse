@@ -34,6 +34,7 @@ AM2320 используется для измерения температуры
 
 ![Relay8_12V](https://github.com/EngDial/Greenhouse/blob/master/img/Relay8_12V.jpg)
 ![Cjmcu-595](https://github.com/EngDial/Greenhouse/blob/master/img/Cjmcu-595.jpg)
+![74hc595](https://github.com/EngDial/Greenhouse/blob/master/img/74hc595.jpg)
 ### Входные сигналы
 Регистры сдвига 74HC165 с параллельным входом и последовательным выходом, подключенные к шине SPI, расширяют входные порты. Входы используют защиту на обратном диоде, который обеспечивает активный низкий уровень.
 
