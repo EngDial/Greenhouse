@@ -4,12 +4,12 @@ This is an arduino project for controlling the temperature and humidity of air a
 ### Arduino board
 As a base board, the Arduino board is the STM32F103C8.
 
-![arduino_stm32](https://github.com/EngDial/Greenhouse/blob/master/img/arduino_stm32.jpg)
+![arduino_stm32](https://github.com/EngDial/Greenhouse/blob/master/img/arduino_stm32_.jpg)
 
 ### Power
 Power is provided from a 12-volt uninterruptible power supply via a DC/DC converter that outputs 5V/2A.
 
-![arduino_stm32](https://github.com/EngDial/Greenhouse/blob/master/img/dc_dc.jpg)
+![arduino_stm32](https://github.com/EngDial/Greenhouse/blob/master/img/dc_dc_.jpg)
 
 ### RTC
 ![DS3231](https://github.com/EngDial/Greenhouse/blob/master/img/DS3231_.jpg)
