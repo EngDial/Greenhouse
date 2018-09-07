@@ -34,7 +34,6 @@ Sensors DS18B20 in hermetic design are used to control air and soil temperature.
 To control the external load, relay modules are used. The relays are controlled via the shift registers 74НС595 connected cascaded and connected via the SPI bus.
 
 ![RELAY16_12V](https://github.com/EngDial/Greenhouse/blob/master/img/RELAY16_12V_.jpg)
-
 ![HC595](https://github.com/EngDial/Greenhouse/blob/master/img/74HC595_.jpg)
 
 ### Input siglas
