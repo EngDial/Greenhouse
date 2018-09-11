@@ -1,4 +1,4 @@
 # Libraries List
 
-DS3231  - RTC
+**DS3231**  - RTC
 
