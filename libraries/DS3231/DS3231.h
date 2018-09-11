@@ -1,7 +1,8 @@
 #ifndef DS3231_H
 #define DS3231_H
 
-#include <Arduino.h> 
+#include <Arduino.h>
+#include <Wire.h> 
 
 #define DS3231_address			(0xD0 >> 1)  
 
@@ -66,7 +67,7 @@ typedef enum
 class DS3231
 {
   public:
-	bool begin(void);
+	bool begin(TwoWire* comwire);
 	void setDateTime(uint16_t year, uint8_t month, uint8_t day, uint8_t hour, uint8_t minute, uint8_t second);
 	void setDateTime(uint32_t t);
 	void setDateTime(const char* date, const char* time);
@@ -100,6 +101,7 @@ class DS3231
 
   private:
 	RTCDateTime t;
+	TwoWire* comm;
 	char *strDayOfWeek(uint8_t dayOfWeek);
 	char *strMonth(uint8_t month);
 	char *strAmPm(uint8_t hour, bool uppercase);
