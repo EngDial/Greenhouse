@@ -1,15 +1,14 @@
-//#include "Arduino.h"
 #include "DS3231.h"
-#include <Wire.h>
 
 const uint8_t daysArray [] PROGMEM = { 31,28,31,30,31,30,31,31,30,31,30,31 };
 const uint8_t dowArray[] PROGMEM = { 0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4 };
 
 //char buffer[255];
 
-bool DS3231::begin(void)
+bool DS3231::begin(TwoWire* comwire)
 {
-  Wire.begin();
+  comm = comwire;
+  comm->begin();
   setBattery(true, false);
   t.year = 2000;
   t.month = 1;
@@ -24,17 +23,17 @@ bool DS3231::begin(void)
 
 void DS3231::setDateTime(uint16_t year, uint8_t month, uint8_t day, uint8_t hour, uint8_t minute, uint8_t second)
 {
-  Wire.beginTransmission(DS3231_address);
-  Wire.write(DS3231_REG_TIME);
-  Wire.write(dec2bcd(second));
-  Wire.write(dec2bcd(minute));
-  Wire.write(dec2bcd(hour));
-  Wire.write(dec2bcd(dow(year, month, day)));
-  Wire.write(dec2bcd(day));
-  Wire.write(dec2bcd(month));
-  Wire.write(dec2bcd(year-2000));
-  Wire.write(DS3231_REG_TIME);
-  Wire.endTransmission();
+  comm->beginTransmission(DS3231_address);
+  comm->write(DS3231_REG_TIME);
+  comm->write(dec2bcd(second));
+  comm->write(dec2bcd(minute));
+  comm->write(dec2bcd(hour));
+  comm->write(dec2bcd(dow(year, month, day)));
+  comm->write(dec2bcd(day));
+  comm->write(dec2bcd(month));
+  comm->write(dec2bcd(year-2000));
+  comm->write(DS3231_REG_TIME);
+  comm->endTransmission();
 }
 
 void DS3231::setDateTime(uint32_t t)
@@ -316,14 +315,14 @@ RTCDateTime DS3231::getDateTime(void)
 int values[7];
 int i;
 //------------------------------
-  Wire.beginTransmission(DS3231_address);
-  Wire.write(DS3231_REG_TIME);
-  Wire.endTransmission();
-  Wire.requestFrom(DS3231_address, 7);
-  while(!Wire.available()) {};
+  comm->beginTransmission(DS3231_address);
+  comm->write(DS3231_REG_TIME);
+  comm->endTransmission();
+  comm->requestFrom(DS3231_address, 7);
+  while(!comm->available()) {};
   for ( i = 6; i >= 0; i-- )
-    values[i] = bcd2dec(Wire.read());
-  Wire.endTransmission();
+    values[i] = bcd2dec(comm->read());
+  comm->endTransmission();
 
   t.year = values[0] + 2000;
   t.month = values[1];
@@ -432,13 +431,13 @@ float DS3231::readTemperature(void)
 {
 uint8_t msb, lsb;
 //------------------------------
-  Wire.beginTransmission(DS3231_address);
-  Wire.write(DS3231_REG_TEMPERATURE);
-  Wire.endTransmission();
-  Wire.requestFrom(DS3231_address, 2);
-  while ( !Wire.available() ) {};
-  msb = Wire.read();
-  lsb = Wire.read();
+  comm->beginTransmission(DS3231_address);
+  comm->write(DS3231_REG_TEMPERATURE);
+  comm->endTransmission();
+  comm->requestFrom(DS3231_address, 2);
+  while ( !comm->available() ) {};
+  msb = comm->read();
+  lsb = comm->read();
   return ((((short)msb << 8) | (short)lsb) >> 6) / 4.0f;
 }
 
@@ -448,14 +447,14 @@ uint8_t values[4];
 RTCAlarmTime a;
 int i;
 //------------------------------
-  Wire.beginTransmission(DS3231_address);
-  Wire.write(DS3231_REG_ALARM_1);
-  Wire.endTransmission();
-  Wire.requestFrom(DS3231_address, 4);
-  while ( !Wire.available() ) {};
+  comm->beginTransmission(DS3231_address);
+  comm->write(DS3231_REG_ALARM_1);
+  comm->endTransmission();
+  comm->requestFrom(DS3231_address, 4);
+  while ( !comm->available() ) {};
   for ( i = 3; i >= 0; i-- )
-    values[i] = bcd2dec(Wire.read() & 0b01111111);
-  Wire.endTransmission();
+    values[i] = bcd2dec(comm->read() & 0b01111111);
+  comm->endTransmission();
   a.day = values[0];
   a.hour = values[1];
   a.minute = values[2];
@@ -469,14 +468,14 @@ uint8_t values[4];
 uint8_t mode = 0;
 int i;
 //------------------------------
-  Wire.beginTransmission(DS3231_address);
-  Wire.write(DS3231_REG_ALARM_1);
-  Wire.endTransmission();
-  Wire.requestFrom(DS3231_address, 4);
-  while(!Wire.available()) {};
+  comm->beginTransmission(DS3231_address);
+  comm->write(DS3231_REG_ALARM_1);
+  comm->endTransmission();
+  comm->requestFrom(DS3231_address, 4);
+  while(!comm->available()) {};
   for ( i = 3; i >= 0; i-- )
-    values[i] = bcd2dec(Wire.read());
-  Wire.endTransmission();
+    values[i] = bcd2dec(comm->read());
+  comm->endTransmission();
   mode |= ((values[3] & 0b01000000) >> 6);
   mode |= ((values[2] & 0b01000000) >> 5);
   mode |= ((values[1] & 0b01000000) >> 4);
@@ -536,13 +535,13 @@ void DS3231::setAlarm1(uint8_t dydw, uint8_t hour, uint8_t minute, uint8_t secon
 		dydw |= 0b01000000;
 		break;
   }
-  Wire.beginTransmission(DS3231_address);
-  Wire.write(DS3231_REG_ALARM_1);
-  Wire.write(second);
-  Wire.write(minute);
-  Wire.write(hour);
-  Wire.write(dydw);
-  Wire.endTransmission();
+  comm->beginTransmission(DS3231_address);
+  comm->write(DS3231_REG_ALARM_1);
+  comm->write(second);
+  comm->write(minute);
+  comm->write(hour);
+  comm->write(dydw);
+  comm->endTransmission();
   armAlarm1(armed);
   clearAlarm1();
 }
@@ -593,14 +592,14 @@ uint8_t values[3];
 RTCAlarmTime a;
 int i;
 //------------------------------
-  Wire.beginTransmission(DS3231_address);
-  Wire.write(DS3231_REG_ALARM_2);
-  Wire.endTransmission();
-  Wire.requestFrom(DS3231_address, 3);
-  while ( !Wire.available() ) {};
+  comm->beginTransmission(DS3231_address);
+  comm->write(DS3231_REG_ALARM_2);
+  comm->endTransmission();
+  comm->requestFrom(DS3231_address, 3);
+  while ( !comm->available() ) {};
   for ( i = 2; i >= 0; i-- )
-    values[i] = bcd2dec(Wire.read() & 0b01111111);
-  Wire.endTransmission();
+    values[i] = bcd2dec(comm->read() & 0b01111111);
+  comm->endTransmission();
   a.day = values[0];
   a.hour = values[1];
   a.minute = values[2];
@@ -614,14 +613,14 @@ uint8_t values[3];
 uint8_t mode = 0;
 int i;
 //------------------------------
-  Wire.beginTransmission(DS3231_address);
-  Wire.write(DS3231_REG_ALARM_2);
-  Wire.endTransmission();
-  Wire.requestFrom(DS3231_address, 3);
-  while ( !Wire.available() ) {};
+  comm->beginTransmission(DS3231_address);
+  comm->write(DS3231_REG_ALARM_2);
+  comm->endTransmission();
+  comm->requestFrom(DS3231_address, 3);
+  while ( !comm->available() ) {};
   for ( i = 2; i >= 0; i-- )
-    values[i] = bcd2dec(Wire.read());
-  Wire.endTransmission();
+    values[i] = bcd2dec(comm->read());
+  comm->endTransmission();
   mode |= ((values[2] & 0b01000000) >> 5);
   mode |= ((values[1] & 0b01000000) >> 4);
   mode |= ((values[0] & 0b01000000) >> 3);
@@ -667,12 +666,12 @@ void DS3231::setAlarm2(uint8_t dydw, uint8_t hour, uint8_t minute, DS3231_alarm2
 		dydw |= 0b01000000;
 		break;
   }
-  Wire.beginTransmission(DS3231_address);
-  Wire.write(DS3231_REG_ALARM_2);
-  Wire.write(minute);
-  Wire.write(hour);
-  Wire.write(dydw);
-  Wire.endTransmission();
+  comm->beginTransmission(DS3231_address);
+  comm->write(DS3231_REG_ALARM_2);
+  comm->write(minute);
+  comm->write(hour);
+  comm->write(dydw);
+  comm->endTransmission();
   armAlarm2(armed);
   clearAlarm2();
 }
@@ -907,22 +906,22 @@ uint8_t dow;
 
 void DS3231::writeRegister8(uint8_t reg, uint8_t value)
 {
-  Wire.beginTransmission(DS3231_address);
-  Wire.write(reg);
-  Wire.write(value);
-  Wire.endTransmission();
+  comm->beginTransmission(DS3231_address);
+  comm->write(reg);
+  comm->write(value);
+  comm->endTransmission();
 }
 
 uint8_t DS3231::readRegister8(uint8_t reg)
 {
 uint8_t value;
 //------------------------------
-  Wire.beginTransmission(DS3231_address);
-  Wire.write(reg);
-  Wire.endTransmission();
-  Wire.requestFrom(DS3231_address, 1);
-  while ( !Wire.available() ) {};
-  value = Wire.read();
-  Wire.endTransmission();
+  comm->beginTransmission(DS3231_address);
+  comm->write(reg);
+  comm->endTransmission();
+  comm->requestFrom(DS3231_address, 1);
+  while ( !comm->available() ) {};
+  value = comm->read();
+  comm->endTransmission();
   return value;
 }
